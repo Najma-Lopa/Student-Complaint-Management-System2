@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row align-items-center justify-content-center mt-5 text-center">
+    <div class="col-lg-8">
+        <i class="bi bi-building text-hstu" style="font-size: 4rem;"></i>
+        <h1 class="display-5 fw-bold text-hstu mt-3">HSTU Student Complaint Portal</h1>
+        <p class="lead text-muted mt-3 mb-5">
+            An integrated platform for the students of Hajee Mohammad Danesh Science and Technology University. 
+            Let us know about any of your academic, residential, or administrative issues.
+        </p>
+        
+        <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+            <a href="/submit" class="btn btn-hstu btn-lg px-4 py-3 shadow-sm rounded-pill">
+                <i class="bi bi-pencil-square me-2"></i> Submit Complaint
+            </a>
+            <a href="/track" class="btn btn-outline-secondary btn-lg px-4 py-3 shadow-sm rounded-pill bg-white">
+                <i class="bi bi-search me-2"></i> Track Status
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

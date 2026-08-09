@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center mt-4">
+    <div class="col-md-7">
+        <div class="card">
+            <div class="card-body p-5">
+                <div class="text-center mb-4">
+                    <h3 class="fw-bold text-hstu">Submit Your Complaint</h3>
+                    <p class="text-muted small">Please fill out the form below with accurate details.</p>
+                </div>
+                
+                <form method="POST">
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label class="form-label fw-semibold">Full Name</label>
+                            <input type="text" name="student_name" class="form-control form-control-lg bg-light" placeholder="e.g. Md. Hasan" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-semibold">Student ID</label>
+                            <input type="text" name="student_id" class="form-control form-control-lg bg-light" placeholder="e.g. 210xxxx" required>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <label class="form-label fw-semibold">Department</label>
+                            <select name="department" class="form-select form-select-lg bg-light" required>
+                                <option value="" selected disabled>Select Department</option>
+                                <option value="CSE">CSE</option>
+                                <option value="EEE">EEE</option>
+                                <option value="ECE">ECE</option>
+                                <option value="Agriculture">Agriculture</option>
+                                <option value="BBA">BBA</option>
+                                <option value="Veterinary">Veterinary</option>
+                                <option value="Others">Others</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold">Complaint Details</label>
+                        <textarea name="description" class="form-control bg-light" rows="5" placeholder="Describe your issue clearly..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-hstu btn-lg w-100 rounded-pill">
+                        <i class="bi bi-send me-2"></i> Submit Issue
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

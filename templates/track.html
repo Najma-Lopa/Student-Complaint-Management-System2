@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center mt-4">
+    <div class="col-md-8">
+        <div class="card mb-4 p-4">
+            <div class="text-center mb-4">
+                <h3 class="fw-bold text-hstu">Track Complaint Status</h3>
+            </div>
+            <form method="POST" class="d-flex">
+                <input type="text" name="tracking_id" class="form-control form-control-lg me-2 bg-light" placeholder="Enter ID (e.g. HSTU-XXXXXX)" value="{{ prefill_id }}" required>
+                <button type="submit" class="btn btn-hstu btn-lg px-4"><i class="bi bi-search"></i></button>
+            </form>
+        </div>
+        
+        {% if complaint %}
+        <div class="card border-0 shadow-sm overflow-hidden">
+            <div class="card-header hstu-primary text-white py-3">
+                <h5 class="mb-0"><i class="bi bi-info-circle me-2"></i> Details for {{ complaint.id }}</h5>
+            </div>
+            <div class="card-body p-4">
+                <div class="row mb-3">
+                    <div class="col-sm-4 text-muted">Student Name:</div>
+                    <div class="col-sm-8 fw-semibold">{{ complaint.student_name }}</div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-4 text-muted">ID & Department:</div>
+                    <div class="col-sm-8 fw-semibold">{{ complaint.student_id }} ({{ complaint.department }})</div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-4 text-muted">Issue:</div>
+                    <div class="col-sm-8">{{ complaint.description }}</div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-sm-4 text-muted">Status:</div>
+                    <div class="col-sm-8">
+                        {% if complaint.status == 'Pending' %}
+                            <span class="badge bg-warning text-dark px-3 py-2 rounded-pill"><i class="bi bi-hourglass-split me-1"></i> Pending</span>
+                        {% elif complaint.status == 'In Progress' %}
+                            <span class="badge bg-info text-dark px-3 py-2 rounded-pill"><i class="bi bi-gear-wide-connected me-1"></i> In Progress</span>
+                        {% else %}
+                            <span class="badge bg-success px-3 py-2 rounded-pill"><i class="bi bi-check-circle me-1"></i> Resolved</span>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <div class="p-3 bg-light rounded-3 border-start border-4 border-primary">
+                    <h6 class="fw-bold text-hstu mb-2"><i class="bi bi-person-workspace me-2"></i>Admin Response:</h6>
+                    <p class="mb-0 {{ 'text-muted' if not complaint.admin_response }}">
+                        {{ complaint.admin_response or "No response has been provided yet. Please wait patiently." }}
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
