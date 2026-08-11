@@ -84,7 +84,7 @@ def track_complaint():
 @app.route('/admin/login', methods=['GET', 'POST'])
 def admin_login():
     if request.method == 'POST':
-        if request.form['username'] == 'admin' and request.form['password'] == 'admin123':
+        if request.form['username'] == 'sultan' and request.form['password'] == 'sultan123':
             session['admin_logged_in'] = True
             return redirect(url_for('admin_dashboard'))
         else:
